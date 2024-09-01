@@ -1,10 +1,18 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Accordion from "./components/Accordion/Accordion";
-import Counter from "./classComponents/Counter/Counter";
-import { CheckBox, InputField, SubmitButton } from "./components/Form/Form";
 import { useState } from "react";
-import LifeCycle from "./classComponents/LifeCycle/LifeCycle";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/home";
+import About from "./pages/about";
+import Services from "./pages/services";
+import Contact from "./pages/contact";
+import Navbar from "./components/Navbar/Navbar";
+import Page404 from "./pages/page404";
+import User from "./pages/user";
+import UserDetail from "./pages/userDetail";
+import ContactInfo from "./pages/contactInfo";
+import Login from "./pages/login";
+import Signup from "./pages/Signup";
+import Protected from "./components/Protected/Protected";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -25,61 +33,20 @@ function App() {
   }
   return (
     <div className="App">
-      <div className="px-10 py-20">
-        <div className="max-w-5xl w-full mx-auto">
-          {/* <Accordion title="Hello click me" description={'Hello I am description'} />
-          <Counter/> */}
-     
-          <form
-            action=""
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-          >
-            <InputField
-              name="user-name"
-              label="User Name"
-              type="text"
-              placeholder="User Name"
-              className="mb-5"
-              userInputValue={handelUserName}
-            />
-            <InputField
-              name="email"
-              label="Email"
-              type="email"
-              placeholder="User Email"
-              value=""
-              className="mb-5"
-              userInputValue={handelUserEmail}
-            />
-            <InputField
-              name="phone"
-              label="Phone"
-              type="text"
-              placeholder="Phone"
-              value=""
-              className="mb-5"
-              userInputValue={handelUserPhone}
-            />
-            <CheckBox text="Are you agree for term and conditions" userCheckValue={handelCheckValue}/>
-            <SubmitButton />
-          </form>
-
-          <div className="text-left mt-9">
-            <p><span className="font-bold mr-5">User Name:</span>{userName}</p>
-            <p><span className="font-bold mr-5">User Email:</span>{userEmail}</p>
-            <p><span className="font-bold mr-5">User Phone:</span>{userPhone}</p>
-            <p><span className="font-bold mr-5">Terms and Condition:</span>{checkValue?"True":"False"}</p>
-          </div>
-        </div>
-      </div>
-
-      <section className="px-10 py-20 bg-gray-100">
-        <div className="max-w-5xl w-full mx-auto">
-            <LifeCycle/>
-        </div>
-      </section>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/about" element={<About/>}/>
+        <Route path="/services" element={<Services/>}/>
+        <Route path="/users" element={<Protected Component={User}/>}/>
+        <Route path="/users/:user" element={<Protected Component={UserDetail}/>}/>
+        <Route path="/contact/" element={<Contact/>}>
+        <Route path="contact-info" element={<ContactInfo/>}/>
+        </Route>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<Signup/>}/>
+        <Route path="/*" element={<Page404/>}/>
+      </Routes>
     </div>
   );
 }

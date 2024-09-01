@@ -55,13 +55,13 @@ export function CheckBox({
     </div>
   );
 }
-export function SubmitButton() {
+export function SubmitButton({value="Submit"}) {
   return (
     <div className="text-left mt-6">
       <input
         type="submit"
-        value="Submit"
-        className="bg-green-600 text-white px-5 py-2 rounded"
+        value={value}
+        className="bg-green-600 text-white px-5 py-2 rounded cursor-pointer"
       />
     </div>
   );
