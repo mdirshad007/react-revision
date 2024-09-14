@@ -13,6 +13,8 @@ import ContactInfo from "./pages/contactInfo";
 import Login from "./pages/login";
 import Signup from "./pages/Signup";
 import Protected from "./components/Protected/Protected";
+import AddNewUser from "./pages/addNewUser";
+import UserUpdate from "./pages/UserUpdate";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -39,7 +41,9 @@ function App() {
         <Route path="/about" element={<About/>}/>
         <Route path="/services" element={<Services/>}/>
         <Route path="/users" element={<Protected Component={User}/>}/>
-        <Route path="/users/:user" element={<Protected Component={UserDetail}/>}/>
+        <Route path="/add-new-user" element={<Protected Component={AddNewUser}/>}/>
+        <Route path="/users/:id" element={<Protected Component={UserDetail}/>}/>
+        <Route path="/update/:id" element={<Protected Component={UserUpdate}/>}/>
         <Route path="/contact/" element={<Contact/>}>
         <Route path="contact-info" element={<ContactInfo/>}/>
         </Route>

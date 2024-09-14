@@ -24,6 +24,10 @@ export default function Navbar() {
           <NavLink to="/contact">Contact</NavLink>
         </li>
         {login ? (
+          <>
+           <li>
+           <NavLink to="/add-new-user">Add New User</NavLink>
+         </li>
           <li>
             <button
               onClick={() => {
@@ -34,6 +38,7 @@ export default function Navbar() {
               Logout
             </button>
           </li>
+          </>
         ) : (
           <>
             <li>
