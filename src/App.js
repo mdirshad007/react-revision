@@ -15,6 +15,7 @@ import Signup from "./pages/Signup";
 import Protected from "./components/Protected/Protected";
 import AddNewUser from "./pages/addNewUser";
 import UserUpdate from "./pages/UserUpdate";
+import { ProfileProvider } from "./components/CommonContext/CommonContext";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -34,6 +35,7 @@ function App() {
     setcheckValue(check)
   }
   return (
+    <ProfileProvider>
     <div className="App">
       <Navbar/>
       <Routes>
@@ -52,6 +54,7 @@ function App() {
         <Route path="/*" element={<Page404/>}/>
       </Routes>
     </div>
+    </ProfileProvider>
   );
 }
 
